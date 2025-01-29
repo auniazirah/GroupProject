@@ -1,0 +1,333 @@
+<html> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Join Us - Shakerz</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> 
+        <style> 
+
+            nav {
+                background-color: #5C4033;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                color: rgb(90, 46, 16);
+            }
+
+            nav .logo {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            nav .logo a {
+                text-decoration: none;
+                color: rgb(255, 215, 177);
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: rgb(255, 215, 177);
+                font-size: 1.1em;
+                transition: color 0.3s ease;
+            }
+
+            nav ul li a:hover {
+                color: #ffd9b0;
+            }
+
+            /* General Styles */ 
+            body { 
+                font-family: Arial, sans-serif; 
+                background-color: #f5ede0; 
+                color: #5c4033; 
+                margin: 0; 
+                padding: 0; 
+            } 
+    
+            #join-us { 
+                background-color: #5c4033; 
+                color: #f5ede0; 
+                padding-top: 60px; 
+            } 
+    
+            .section-title { 
+                font-size: 2.8rem; 
+                font-weight: bold; 
+                color: #f5ede0; 
+                text-align: center; 
+                text-transform: uppercase; 
+                letter-spacing: 2px; 
+                margin-bottom: 3rem; 
+            } 
+    
+            /* Job Card Styles */ 
+            .job-card { 
+                background-color: #f5ede0; 
+                border-radius: 15px; 
+                padding: 2rem; 
+                transition: transform 0.3s ease, box-shadow 0.3s ease; 
+                position: relative; 
+                height: 100%; 
+            } 
+    
+            .job-card:hover { 
+                transform: translateY(-10px); 
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+            } 
+    
+            .job-title { 
+                font-size: 1.75rem; 
+                color: #5c4033; 
+                font-weight: bold; 
+                text-align: center; 
+            } 
+    
+            .job-description { 
+                font-size: 1.1rem; 
+                color: #5c4033; 
+                line-height: 1.6; 
+                text-align: center; 
+                margin-bottom: 1rem; 
+            } 
+    
+            .application-process { 
+                font-size: 1.2rem; 
+                color: #5c4033; 
+                font-weight: bold; 
+                text-align: center; 
+            } 
+    
+            .job-apply-btn {
+                margin-top: auto;
+                padding: 12px 20px;
+                background-color: #5c4033;
+                color: #f5ede0;
+                border: none;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                text-align: center;
+                display: block;
+                width: fit-content; /* Ensures the button fits its content */
+                margin-left: auto; /* Centers horizontally */
+                margin-right: auto; /* Centers horizontally */
+            }
+    
+            .job-apply-btn:hover { 
+                background-color: #4f2e26; 
+            } 
+    
+            .job-icon { 
+                color: #5c4033; 
+                transition: transform 0.3s ease; 
+            } 
+    
+            .job-card:hover .job-icon { 
+                transform: rotate(360deg); 
+            } 
+    
+            /* Responsiveness for Mobile */ 
+            @media (max-width: 768px) { 
+                .section-title { 
+                    font-size: 2rem; 
+                } 
+    
+                .job-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                padding: 2rem;
+                border-radius: 15px;
+                background-color: #f5ede0;
+                height: 100%;
+                text-align: center;
+                }
+
+                .job-description,
+                .application-process {
+                    margin-bottom: 20px; /* Adds spacing below descriptions */
+                
+                }
+                .job-apply-btn {
+                margin-top: 20px; /* Space above the button */
+                padding: 12px 20px; /* Adjust button padding */
+                width: auto; /* Ensure the button does not stretch unnecessarily */
+                display: block; /* Makes the button behave like a block-level element */
+                margin-left: auto; /* Align center horizontally */
+                margin-right: auto; /* Align center horizontally */
+                }
+            }
+        
+            /* Footer */
+            footer {
+                background-color: #462c23;
+                color: white;
+                padding: 30px 0;
+                text-align: center;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+    
+        </style> 
+    </head> 
+    
+    <body> 
+
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">ＳＨＡＫＥＲＺ</a>
+            </div>
+            <ul>
+                <li><a href="homepage.html">𝐇𝐨𝐦𝐞</a></li>
+                <li><a href="about_us.html">𝐀𝐛𝐨𝐮𝐭 𝐔𝐬</a></li>
+                <li><a href="flavours.html">𝐅𝐥𝐚𝐯𝐨𝐮𝐫𝐬</a></li>
+                <li><a href="shop.html">𝐒𝐡𝐨𝐩</a></li>
+                <li><a href="contact_us.html">𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐔𝐬</a></li>
+                <li><a href="location.html">𝐒𝐭𝐨𝐫𝐞 𝐋𝐨𝐜𝐚𝐭𝐢𝐨𝐧𝐬</a></li>
+            </ul>
+        </nav>
+
+        <header class="py-5" style="background-color: #5c4033; color: #f5ede0; text-align: center;"> 
+            <h1>SHAKERZ</h1> 
+        </header> 
+    
+        <!-- Join Us Section --> 
+        <section class="py-5" id="join-us"> 
+            <div class="container"> 
+                <h2 class="section-title mb-4">Join Our Creative Team</h2> 
+                <div class="row g-4"> 
+                    <!-- Barista Card --> 
+                    <div class="col-md-6"> 
+                        <div class="job-card shadow-lg rounded-lg p-4 position-relative"> 
+                            <h3 class="job-title">Barista</h3> 
+                            <p class="job-description">We are looking for passionate Baristas to craft delicious coffee and beverages while delivering excellent customer service.</p> 
+                            <p class="application-process">Application Process: Submit your resume and highlight your barista experience.</p> 
+                            <a href="apply.html?position=Barista" class="job-apply-btn">Apply Now</a> 
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3"> 
+                                <i class="bi bi-cup" style="font-size: 3rem;"></i> 
+                            </div> 
+                        </div> 
+                    </div> 
+    
+                    <!-- Mixologist Card --> 
+                    <div class="col-md-6"> 
+                        <div class="job-card shadow-lg rounded-lg p-4 position-relative"> 
+                            <h3 class="job-title">Mixologist</h3> 
+                            <p class="job-description">Join our team as a Mixologist and bring creativity to crafting signature drinks and cocktails that delight customers.</p> 
+                            <p class="application-process">Application Process: Submit your resume and portfolio of signature drinks.</p> 
+                            <a href="apply.html?position=Mixologist" class="job-apply-btn">Apply Now</a> 
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3"> 
+                                <i class="bi bi-cloud" style="font-size: 3rem;"></i> 
+                            </div> 
+                        </div> 
+                    </div> 
+    
+                    <!-- Beverage Innovator Card --> 
+                    <div class="col-md-6"> 
+                        <div class="job-card shadow-lg rounded-lg p-4 position-relative"> 
+                            <h3 class="job-title">Beverage Innovator</h3> 
+                            <p class="job-description">We are looking for a Beverage Innovator to develop new drink recipes and enhance our menu offerings with creative concepts.</p> 
+                            <p class="application-process">Application Process: Submit your resume and a portfolio of innovative recipes.</p> 
+                            <a href="apply.html?position=Beverage%20Innovator" class="job-apply-btn">Apply Now</a> 
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3"> 
+                                <i class="bi bi-lightbulb" style="font-size: 3rem;"></i> 
+                            </div> 
+                        </div> 
+                    </div> 
+    
+                    <!-- Quality Control Specialist Card --> 
+                    <div class="col-md-6"> 
+                        <div class="job-card shadow-lg rounded-lg p-4 position-relative"> 
+                            <h3 class="job-title">Quality Control Specialist</h3> 
+                            <p class="job-description">Ensure the quality of our beverages meets high standards. Conduct tastings, monitor production, and maintain consistency.</p> 
+                            <p class="application-process">Application Process: Submit your resume and relevant quality control experience.</p> 
+                            <a href="apply.html?position=Quality%20Control%20Specialist" class="job-apply-btn">Apply Now</a> 
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3"> 
+                                <i class="bi bi-check-circle" style="font-size: 3rem;"></i> 
+                            </div> 
+                        </div> 
+                    </div> 
+    
+                    <!-- Sales and Marketing Specialist Card -->
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="job-card shadow-lg rounded-lg p-4 position-relative" style="width: 50%;">
+                            <h3 class="job-title">Sales & Marketing Specialist</h3>
+                            <p class="job-description">Drive our brand awareness and customer engagement through innovative sales and marketing strategies.</p>
+                            <p class="application-process">Application Process: Submit your resume and a portfolio of marketing campaigns you've managed.</p>
+                            <a href="apply.html?position=Sales%20and%20Marketing%20Specialist" class="job-apply-btn">Apply Now</a>
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3">
+                                <i class="bi bi-bar-chart" style="font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer style="background-color: #462c23; color: white; padding: 30px 0; font-size: 14px;">
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: flex-start; max-width: 1200px; margin: 0 auto;">
+                <!-- Get to Know Us Section -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Get to Know Us</h4>
+                    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                        <li><a href="about_us.html" style="color: white; text-decoration: none;">About Us</a></li>
+                        <li><a href="about_us.html" style="color: white; text-decoration: none;">Careers</a></li>
+                        <li><a href="location.html" style="color: white; text-decoration: none;">Location</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Support Section -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Support</h4>
+                    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                        <li><a href="contact_us.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+                        <li><a href="join_us.html" style="color: white; text-decoration: none;">Ride With Us</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Social Media Section -->
+                <div style="text-align: center;">
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Social Media</h4>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <div style="display: flex; gap: 15px;">
+                            <a href="https://www.facebook.com/ShakerzLetops/" style="color: white; text-decoration: none;">
+                                <img src="images/Free Facebook.jpeg" alt="Facebook" style="width: 44px; height: 44px;">
+                            </a>
+                            <a href="https://www.tiktok.com/@mahirahsahimi?lang=en" style="color: white; text-decoration: none;">
+                                <img src="images/Real TikTok Logo.jpeg" alt="TikTok" style="width: 44px; height: 44px;">
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="https://www.instagram.com/shakerz.ghombau/?hl=en" style="color: white; text-decoration: none;">
+                                <img src="images/instagramlogo.jpg" alt="Instagram" style="width: 44px; height: 44px;">
+                            </a>
+                            <a href="https://linktr.ee/shakerz.ghombau" style="color: white; text-decoration: none;">
+                                <img src="images/linktreelogo.png" alt="Linktree" style="width: 44px; height: 44px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shakerz Logo Section -->
+                <div style="text-align: center; margin-top: 20px; flex-basis: 100%;">
+                    <h4 style="font-size: 1.5rem; font-weight: bold;">Shakerz</h4>
+                    <p>&copy; 2024 Shakerz. All rights reserved.</p>
+                </div>
+            </div>
+        </footer> 
+
+    </body>
+ </html>

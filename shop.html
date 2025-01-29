@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Shop - Shakerz</title>
+
+        <style>
+            /* Navigation and Header Styles */
+            nav {
+                background-color: #5C4033;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: sticky;
+                color: rgb(90, 46, 16);
+            }
+        
+            nav .logo {
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+        
+            nav .logo a {
+                text-decoration: none;
+                color: rgb(255, 215, 177);
+            }
+        
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+            }
+        
+            nav ul li a {
+                text-decoration: none;
+                color: rgb(255, 215, 177);
+                font-size: 1.1em;
+                transition: color 0.3s ease;
+            }
+        
+            nav ul li a:hover {
+                color: #ffd9b0;
+            }
+        
+            .cart-icon {
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+        
+            .cart-icon img {
+                width: 30px;
+                height: 30px;
+            }
+        
+            .cart-badge {
+                position: absolute;
+                top: -5px;
+                right: -10px;
+                background-color: #A78D78;
+                color: white;
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.8em;
+            }
+
+            /* General Styles */
+            body {
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #F5EDE0;
+                min-height: 100vh;
+            }
+        
+            /* Header Styles */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: #5C4033;
+                color: white;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .shop h1 {
+                text-align: center;
+                font-size: 2.5em;
+                margin-bottom: 20px;
+                color: #291C0E;
+            }
+
+            .products {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .product-card {
+                width: 280px;  
+                height: 380px; 
+                background-color: #E1D4C2;
+                padding: 15px;  
+                border: 2px solid #ddd;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;  
+                text-align: center;
+            }
+
+            .product-card h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;  
+            }
+
+            .product-card p {
+                font-size: 1em;
+                margin-bottom: 15px;  
+            }
+
+            .product-card img {
+                width: 100%;
+                height: 160px;  
+                object-fit: cover;  
+                border-radius: 5px;
+                margin-bottom: 15px;  
+            }
+            
+            .product-card img:hover {
+                transform: scale(1.1);
+                transition: transform 0.3s ease;  
+            }
+
+            .add-to-cart {
+                padding: 10px 15px;
+                background-color: #ff9b85;
+                border: none;
+                color: white;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .add-to-cart:hover {
+                background-color: #ff7f61;
+            }
+            
+            button.add-to-cart {
+                background-color: #5C4033;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+        
+            button.add-to-cart:hover {
+                background-color: #704D3A;
+            }
+        
+            /* Modal */
+            #cart-modal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1000;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 80%;
+                max-width: 600px;
+                overflow-y: auto;
+            }
+        
+            #cart-modal h2 {
+                margin-top: 0;
+                text-align: center;
+                font-size: 24px;
+            }
+        
+            #cart-modal table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                font-size: 16px;
+            }
+        
+            #cart-modal th, #cart-modal td {
+                padding: 15px;
+                border: 1px solid #5C4033;
+                text-align: center;
+            }
+        
+            #cart-modal th {
+                background-color: #F5EDE0;
+                font-weight: bold;
+            }
+        
+            .remove-btn {
+                background-color: #E74C3C;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+        
+            .remove-btn:hover {
+                background-color: #C0392B;
+            }
+        
+            #checkout-btn {
+                background-color: #5C4033;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-top: 20px;
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+            }
+        
+            #checkout-btn:hover {
+                background-color: #704D3A;
+            }
+        
+            /* Confirmation Modal */
+            #confirmation-modal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1000;
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 80%;
+                max-width: 600px;
+                overflow-y: auto;
+            }
+
+           /* Footer */
+           footer {
+                background-color: #462c23;
+                color: white;
+                padding: 30px 0;
+                text-align: center;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+        </style>    
+    </head>
+    <body>
+
+        <!-- Header with Navigation Bar -->
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">ＳＨＡＫＥＲＺ</a>
+            </div>
+            <ul>
+                <li><a href="homepage.html">𝐇𝐨𝐦𝐞</a></li>
+                <li><a href="about_us.html">𝐀𝐛𝐨𝐮𝐭 𝐔𝐬</a></li>
+                <li><a href="flavours.html">𝐅𝐥𝐚𝐯𝐨𝐮𝐫𝐬</a></li>
+                <li><a href="shop.html">𝐒𝐡𝐨𝐩</a></li>
+                <li><a href="contact_us.html">𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐔𝐬</a></li>
+                <li><a href="location.html">𝐒𝐭𝐨𝐫𝐞 𝐋𝐨𝐜𝐚𝐭𝐢𝐨𝐧𝐬</a></li>
+            </ul>
+            <div class="cart-icon" onclick="openCartModal()">
+                <img src="images/shop/addtocart-removebg-preview.jpg" alt="Cart" id="cart-image">
+                <span class="cart-badge" id="cart-badge">0</span>
+            </div>
+        </nav>
+        <div class="main-content">
+        <!-- Shop Section -->
+        <section id="shop" class="shop">
+            <h1>Shop Our Flavors !</h1>
+            <div class="products">
+                <!-- Product Cards -->
+                <div class="product-card">
+                    <h3>Hazelnut Chocolate</h3>
+                    <a href="images/shop/hazelnut chocolate.jpg" target="_blank">
+                        <img src="images/shop/hazelnut chocolate.jpg" alt="Hazelnut Chocolate">
+                    </a>
+                    <p>RM 7 per bottle</p>
+                    <button class="add-to-cart" data-name="Hazelnut Chocolate" data-price="7">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <h3>Thai Tea</h3>
+                    <a href="images/shop/thai tea.jpg" target="_blank">
+                        <img src="images/shop/thai tea.jpg" alt="Thai Tea">
+                    </a>
+                    <p>RM 7 per bottle</p>
+                    <button class="add-to-cart" data-name="Thai Tea" data-price="7">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <h3>Thai Green Tea</h3>
+                    <a href="images/shop/thai green tea.jpg" target="_blank">
+                        <img src="images/shop/thai green tea.jpg" alt="Thai Green Tea">
+                    </a>
+                    <p>RM 7 per bottle</p>
+                    <button class="add-to-cart" data-name="Thai Green Tea" data-price="7">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <h3>Thai Strawberry</h3>
+                    <a href="images/shop/thai strawberry.jpg" target="_blank">
+                        <img src="images/shop/thai strawberry.jpg" alt="Thai Strawberry">
+                    </a>
+                    <p>RM 8 per bottle</p>
+                    <button class="add-to-cart" data-name="Thai Strawberry" data-price="8">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Cart Modal --> 
+        <div id="cart-modal" style="display: none; padding: 20px; background-color: #E1D4C2; border-radius: 15px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+            <h2 style="font-family: 'Arial', sans-serif; color: #291C0E;">Your Cart</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #E1D4C2;">
+                        <th style="padding: 10px; text-align: left; color: #5C4033;">Item</th>
+                        <th style="padding: 10px; text-align: left; color: #5C4033;">Price</th>
+                        <th style="padding: 10px; text-align: left; color: #5C4033;">Quantity</th>
+                        <th style="padding: 10px; text-align: left; color: #5C4033;">Total</th>
+                        <th style="padding: 10px; text-align: left; color: #5C4033;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+            </table>
+            <h3 id="cart-total" style="font-family: 'Arial', sans-serif; color: #5C4033;">Total: RM0.00</h3>
+            <button id="checkout-btn" onclick="openConfirmationModal()" style="background-color: #5C4033; color: white; padding: 12px 20px; border: none; border-radius: 25px; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Proceed to Checkout</button>
+            <button id="close-cart-modal" onclick="closeCartModal()" style="background-color: #E1D4C2; color: #5C4033; padding: 12px 20px; border: none; border-radius: 25px; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Close</button>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmation-modal" style="display: none; padding: 20px; background-color: #E1D4C2; border-radius: 15px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
+            <h2 style="font-family: 'Arial', sans-serif; color: #5C4033;">Confirm Your Order</h2>
+            <div id="confirmation-items" style="font-family: 'Arial', sans-serif; color: #5C4033; margin-bottom: 15px;"></div>
+            <p style="font-family: 'Arial', sans-serif; color: #5C4033;">Please confirm your order details. Our delivery team will COD (Cash on Delivery) to your address as soon as possible. Kindly prepare sufficient cash for payment.</p>
+            
+            <form id="cod-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column;">
+                    <label for="name" style="font-family: 'Arial', sans-serif; color: #5C4033; font-weight: bold;">Full Name:</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required style="padding: 12px; border-radius: 25px; border: 1px solid #5C4033; font-family: 'Arial', sans-serif; color: #333; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <label for="phone" style="font-family: 'Arial', sans-serif; color: #5C4033; font-weight: bold;">Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required style="padding: 12px; border-radius: 25px; border: 1px solid #5C4033; font-family: 'Arial', sans-serif; color: #333; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <label for="address" style="font-family: 'Arial', sans-serif; color: #5C4033; font-weight: bold;">Delivery Address:</label>
+                    <textarea id="address" placeholder="Enter your delivery address" required style="padding: 12px; border-radius: 15px; border: 1px solid #5C4033; font-family: 'Arial', sans-serif; color: #333; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); height: 80px;"></textarea>
+                </div>
+                
+                <!-- Confirmation Section -->
+                <div id="final-confirmation-section" style="margin-top: 20px;">
+                    <h3 style="font-family: 'Arial', sans-serif; color: #ff6666;">Final Order Confirmation</h3>
+                    <div id="final-details" style="font-family: 'Arial', sans-serif; color: #ff6666; margin-bottom: 15px;"></div>
+                    <p style="font-family: 'Arial', sans-serif; color: #ff6666;">Are you sure the details are correct? If there's a mistake, we will not be responsible for any issues.</p>
+                </div>
+            </form>
+            
+            <button onclick="confirmOrder()" style="background-color: #5C4033; color: white; padding: 12px 20px; border: none; border-radius: 25px; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                Confirm Order
+            </button>
+            
+            <button id="close-confirmation-modal" onclick="closeConfirmationModal()" style="background-color: #E1D4C2; color: #5C4033; padding: 12px 20px; border: none; border-radius: 25px; cursor: pointer; font-family: 'Arial', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Cancel</button>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <footer style="background-color: #462c23; color: white; padding: 30px 0; font-size: 14px;">
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: flex-start; max-width: 1200px; margin: 0 auto;">
+                <!-- Get to Know Us Section -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Get to Know Us</h4>
+                    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                        <li><a href="about_us.html" style="color: white; text-decoration: none;">About Us</a></li>
+                        <li><a href="about_us.html" style="color: white; text-decoration: none;">Careers</a></li>
+                        <li><a href="location.html" style="color: white; text-decoration: none;">Location</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Section -->
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Support</h4>
+                    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                        <li><a href="contact_us.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+                        <li><a href="join_us.html" style="color: white; text-decoration: none;">Ride With Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Section -->
+                <div style="text-align: center;">
+                    <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Social Media</h4>
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <div style="display: flex; gap: 15px;">
+                            <a href="https://www.facebook.com/ShakerzLetops/" style="color: white; text-decoration: none;">
+                                <img src="images/Free Facebook.jpeg" alt="Facebook" style="width: 44px; height: 44px;">
+                            </a>
+                            <a href="https://www.tiktok.com/@mahirahsahimi?lang=en" style="color: white; text-decoration: none;">
+                                <img src="images/Real TikTok Logo.jpeg" alt="TikTok" style="width: 44px; height: 44px;">
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 15px;">
+                            <a href="https://www.instagram.com/shakerz.ghombau/?hl=en" style="color: white; text-decoration: none;">
+                                <img src="images/instagramlogo.jpg" alt="Instagram" style="width: 44px; height: 44px;">
+                            </a>
+                            <a href="https://linktr.ee/shakerz.ghombau" style="color: white; text-decoration: none;">
+                                <img src="images/linktreelogo.png" alt="Linktree" style="width: 44px; height: 44px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shakerz Logo Section -->
+                <div style="text-align: center; margin-top: 20px; flex-basis: 100%;">
+                    <h4 style="font-size: 1.5rem; font-weight: bold;">Shakerz</h4>
+                    <p>&copy; 2024 Shakerz. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        </div>
+
+        <script>
+            // Show the confirmation section with user details
+            function openConfirmationModal() {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const address = document.getElementById('address').value.trim();
+
+                if (name && phone && address) {
+                    const finalDetails = document.getElementById('final-details');
+                    finalDetails.innerHTML = `
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Phone:</strong> ${phone}</p>
+                        <p><strong>Address:</strong> ${address}</p>
+                    `;
+                    document.getElementById('confirmation-modal').style.display = 'block';
+                } else {
+                    alert('Please fill in all the required fields before confirming.');
+                }
+            }
+            
+
+            // Confirm the final order
+            function confirmFinalOrder() {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const address = document.getElementById('address').value.trim();
+
+                alert(`Thank you for your order, ${name}! We will deliver your items to ${address}. Please prepare sufficient cash for payment.`);
+                closeConfirmationModal();
+            }
+
+            // Close confirmation modal
+            function closeConfirmationModal() {
+                document.getElementById('confirmation-modal').style.display = 'none';
+            }
+        </script>
+
+
+        <script>
+            const cart = [];
+            const cartBadge = document.getElementById('cart-badge');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            // Add item to the cart
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const name = button.dataset.name;
+                    const price = parseFloat(button.dataset.price);
+                    const existingItem = cart.find(item => item.name === name);
+
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cart.push({ name, price, quantity: 1 });
+                    }
+
+                    updateCartBadge();
+                });
+            });
+
+            // Update cart badge count
+            function updateCartBadge() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartBadge.textContent = totalItems;
+                cartBadge.style.display = totalItems > 0 ? 'inline-block' : 'none';
+            }
+
+            // Open cart modal
+            function openCartModal() {
+                cartItems.innerHTML = cart
+                    .map((item, index) => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>RM${item.price.toFixed(2)}</td>
+                            <td>
+                                <button onclick="changeQuantity(${index}, -1)">-</button>
+                                ${item.quantity}
+                                <button onclick="changeQuantity(${index}, 1)">+</button>
+                            </td>
+                            <td>RM${(item.price * item.quantity).toFixed(2)}</td>
+                            <td><button onclick="removeItem(${index})">Remove</button></td>
+                        </tr>
+                    `).join('');
+                updateCartTotal();
+                document.getElementById('cart-modal').style.display = 'block';
+            }
+
+            // Close cart modal
+            function closeCartModal() {
+                document.getElementById('cart-modal').style.display = 'none';
+            }
+
+            // Open confirmation modal
+            function openConfirmationModal() {
+                const confirmationItems = document.getElementById('confirmation-items');
+                confirmationItems.innerHTML = cart
+                    .map(item => `<p>${item.name} - RM${item.price.toFixed(2)} x ${item.quantity}</p>`)
+                    .join('');
+                document.getElementById('confirmation-modal').style.display = 'block';
+            }
+
+            // Close confirmation modal
+            function closeConfirmationModal() {
+                document.getElementById('confirmation-modal').style.display = 'none';
+            }
+
+            function confirmOrder() {
+            // Get the values of the form fields
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            // Check if all fields are filled
+            if (!name || !phone || !address) {
+                alert('Please fill in all the required fields: Name, Phone Number, and Address.');
+                return; // Stop the function if validation fails
+            }
+
+            // If all fields are valid, show the thank-you message
+            alert(`Thank you for your order, ${name}! We will deliver your items to ${address}. Please prepare sufficient cash for payment.`);
+            closeConfirmationModal(); // Close the modal
+        }
+
+
+            // Remove item from cart
+            function removeItem(index) {
+                cart.splice(index, 1);
+                updateCartBadge();
+                openCartModal(); // Refresh cart modal
+            }
+
+            // Change item quantity
+            function changeQuantity(index, change) {
+                const item = cart[index];
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                updateCartBadge();
+                openCartModal(); // Refresh cart modal
+            }
+
+            // Update cart total
+            function updateCartTotal() {
+                const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+                cartTotal.textContent = `Total: RM${total.toFixed(2)}`;
+            }
+        </script>
+
+         
+
+    </body>
+</html>
